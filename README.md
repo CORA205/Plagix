@@ -61,4 +61,4 @@ Soumet un document en français (PDF, TXT, DOCX).
 
 ## Déploiement
 
-🔗 [Lien de démonstration](https://ton-lien-deploy.com)
+🔗 [Lien de démonstration](https://anlim305-plagix.hf.space/docs)
