@@ -51,7 +51,7 @@ async def extract_text(doc: UploadFile):
         for page in f:
             extracted_text += page.get_text()
 
-    return extracted_text.replace("\n", "")
+    return extracted_text.replace("\n", " ").strip()
 
 def split_sentences(text: str) -> list[str]:
     doc = nlp(text)
