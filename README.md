@@ -7,13 +7,16 @@ Microservice FastAPI qui détecte le plagiat translinguistique en comparant des 
 ## Installation
 
 ### 1. Cloner le repo
-git clone https://github.com/ton_username/Plagiat_analysis.git
+git clone https://github.com/CORA205/Plagiat_analysis.git
+
 cd Plagiat_analysis
 
 ### 2. Créer et activer le venv
 python -m venv .venv
-.venv\Scripts\activate        # Windows
-source .venv/bin/activate     # Linux/Mac
+
+.venv\Scripts\activate        # pour Windows
+
+source .venv/bin/activate     # pour Linux/Mac
 
 ### 3. Installer les dépendances
 pip install -r requirements.txt

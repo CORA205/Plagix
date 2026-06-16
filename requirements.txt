@@ -9,6 +9,7 @@ sentence-transformers
 langchain-text-splitters
 spacy
 langdetect
+python-docx
 
 
 

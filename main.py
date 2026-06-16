@@ -5,9 +5,14 @@ import io
 import spacy
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
+from docx import Document
 from langdetect import detect, LangDetectException
 import logging
 import time
+
+
+
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -31,13 +36,19 @@ text_corpus = [
 ]
 
 
+
+
 async def extract_text(doc: UploadFile):
     file_bytes = io.BytesIO(await doc.read())
     ext = doc.filename.rsplit(".", 1)[-1].lower()
 
+    if ext == "docx":
+        document = Document(file_bytes)
+        return " ".join([para.text for para in document.paragraphs])
+
     extracted_text = ""
-    with fitz.open(stream=file_bytes, filetype=ext) as doc:
-        for page in doc:
+    with fitz.open(stream=file_bytes, filetype=ext) as f:
+        for page in f:
             extracted_text += page.get_text()
 
     return extracted_text.replace("\n", "")
