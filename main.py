@@ -9,6 +9,7 @@ from docx import Document
 from langdetect import detect, LangDetectException
 import logging
 import time
+import re
 
 
 
@@ -38,6 +39,19 @@ text_corpus = [
 
 
 
+
+
+
+def clean_text(text: str) -> str:
+    text = text.replace("\n", " ")
+
+    text = re.sub(r"\s+", " ", text)
+
+    text = re.sub(r"[_]{2,}", " ", text)
+
+    return text.strip()
+
+
 async def extract_text(doc: UploadFile):
     file_bytes = io.BytesIO(await doc.read())
     ext = doc.filename.rsplit(".", 1)[-1].lower()
@@ -50,8 +64,9 @@ async def extract_text(doc: UploadFile):
     with fitz.open(stream=file_bytes, filetype=ext) as f:
         for page in f:
             extracted_text += page.get_text()
+            extracted_text = clean_text(extracted_text)
 
-    return extracted_text.replace("\n", " ").strip()
+    return extracted_text
 
 def split_sentences(text: str) -> list[str]:
     doc = nlp(text)
