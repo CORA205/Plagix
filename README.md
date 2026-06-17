@@ -1,3 +1,11 @@
+---
+title: Plagix
+emoji: 👀
+colorFrom: blue
+colorTo: red
+sdk: docker
+pinned: false
+---
 # Plagix — Détection de Plagiat par Traduction
 
 Microservice FastAPI qui détecte le plagiat translinguistique en comparant des documents français avec une base de référence en anglais via similarité cosinus sur des embeddings multilingues.
